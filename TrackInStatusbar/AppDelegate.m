@@ -15,10 +15,27 @@
     // Insert code here to initialize your application
 }
 
+
+
 -(void)awakeFromNib{
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+
     [_statusItem setMenu:statusMenu];
+    
+    [statusMenu setDelegate:self];
+    
     [_statusItem setHighlightMode:YES];
+
+
+    NSBundle *bundle = [NSBundle mainBundle];
+    statusImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"ico" ofType:@"png"]];
+    statusHighlightImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"ico-alt" ofType:@"png"]];
+
+    [_statusItem setImage: statusImage];
+    [_statusItem setAlternateImage: statusHighlightImage];
+    
+    
+    
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                         selector:@selector(allDistributedNotifications:)
                                                             name:nil
@@ -27,9 +44,91 @@
 
 
 
+
+- (void) menuWillOpen:(NSMenu *) aMenu {
+    NSDictionary *artistStringAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                            [NSFont systemFontOfSize:12.0], NSFontAttributeName,
+                                            [NSColor whiteColor], NSForegroundColorAttributeName,
+                                            nil];
+    
+    NSDictionary *titleStringAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                           [NSFont boldSystemFontOfSize:12.0], NSFontAttributeName,
+                                           [NSColor whiteColor], NSForegroundColorAttributeName,
+                                           nil];
+    
+    NSMutableAttributedString *shownStatus = [[NSMutableAttributedString alloc]
+                                              initWithString:[NSString stringWithFormat:@"%@ ",
+                                                              _artist]
+                                              attributes: artistStringAttributes];
+    
+    NSAttributedString *boldTitle = [[NSAttributedString alloc]
+                                     initWithString:[NSString stringWithFormat:@"%@",
+                                                     _title]
+                                     attributes: titleStringAttributes];
+    
+    [shownStatus insertAttributedString: boldTitle atIndex: [shownStatus length]];
+    
+    [_statusItem setAttributedTitle: shownStatus];
+
+}
+
+
+- (void) menuDidClose:(NSMenu *) aMenu {
+    NSShadow * shadow = [NSShadow new];
+    [shadow setShadowColor: [NSColor colorWithSRGBRed: 1 green:1 blue:1 alpha:0.4]];
+    [shadow setShadowBlurRadius: 0.0f];
+    [shadow setShadowOffset: NSMakeSize(0, -1)];
+    [shadow set];
+    
+    NSDictionary *preArtistStringAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                               [NSFont systemFontOfSize:12.0], NSFontAttributeName,
+                                               //[NSColor grayColor], NSForegroundColorAttributeName,
+                                               shadow, NSShadowAttributeName,
+                                               nil];
+    
+    NSDictionary *preTitleStringAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                              [NSFont boldSystemFontOfSize:12.0], NSFontAttributeName,
+                                              //[NSColor grayColor], NSForegroundColorAttributeName,
+                                              shadow, NSShadowAttributeName,
+                                              nil];
+    
+    NSMutableAttributedString *preShownStatus = [[NSMutableAttributedString alloc]
+                                                 initWithString:[NSString stringWithFormat:@"%@ ",
+                                                                 _artist]
+                                                 attributes: preArtistStringAttributes];
+    
+    NSAttributedString *preBoldTitle = [[NSAttributedString alloc]
+                                        initWithString:[NSString stringWithFormat:@"%@",
+                                                        _title]
+                                        attributes: preTitleStringAttributes];
+    
+    [preShownStatus insertAttributedString: preBoldTitle atIndex: [preShownStatus length]];
+    
+    [_statusItem setAttributedTitle: preShownStatus];
+}
+
+
+
+
 - (void) allDistributedNotifications:(NSNotification *)note {
     
-    NSDictionary *stringAttributes = [NSDictionary dictionaryWithObject:[NSFont systemFontOfSize:12.0] forKey:NSFontAttributeName];
+    NSShadow * shadow = [NSShadow new];
+    [shadow setShadowColor: [NSColor colorWithSRGBRed: 1 green:1 blue:1 alpha:0.4]];
+    [shadow setShadowBlurRadius: 0.0f];
+    [shadow setShadowOffset: NSMakeSize(0, -1)];
+    [shadow set];
+    
+    NSDictionary *artistStringAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                [NSFont systemFontOfSize:12.0], NSFontAttributeName,
+                                //[NSColor grayColor], NSForegroundColorAttributeName,
+                                shadow, NSShadowAttributeName,
+                                nil];
+    
+    NSDictionary *titleStringAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                            [NSFont boldSystemFontOfSize:12.0], NSFontAttributeName,
+                                            //[NSColor grayColor], NSForegroundColorAttributeName,
+                                            shadow, NSShadowAttributeName,
+                                            nil];
     
     NSString *name = [note name];
     NSDictionary *userInfo = [note userInfo];
@@ -38,13 +137,23 @@
         
         _clipStatus = [NSString stringWithFormat:@"%@ – %@",
                             [userInfo objectForKey:@"Artist"], [userInfo objectForKey:@"Name"]];
+                
+        NSMutableAttributedString *shownStatus = [[NSMutableAttributedString alloc]
+                                           initWithString:[NSString stringWithFormat:@"%@ ",
+                                                           [userInfo objectForKey:@"Artist"]]
+                                           attributes: artistStringAttributes];
         
-        NSAttributedString *shownStatus = [[NSAttributedString alloc]
-                                           initWithString:[NSString stringWithFormat:@"▶ %@: %@",
-                                                           [userInfo objectForKey:@"Artist"], [userInfo objectForKey:@"Name"]]
-                                           attributes:stringAttributes];
+        NSAttributedString *boldTitle = [[NSAttributedString alloc]
+                                           initWithString:[NSString stringWithFormat:@"%@",
+                                                           [userInfo objectForKey:@"Name"]]
+                                           attributes: titleStringAttributes];
+        
+        [shownStatus insertAttributedString: boldTitle atIndex: [shownStatus length]];
+
+        
         
         [_statusItem setAttributedTitle: shownStatus];
+     
         
         _title = [userInfo objectForKey:@"Name"];
         _artist = [userInfo objectForKey:@"Artist"];
@@ -75,6 +184,11 @@
 
 - (IBAction)Quit:(id)sender {
     [NSApp terminate:nil];
+}
+
+- (void)onStatusMenu:(id)none
+{
+    NSLog(@"onStatusMenu");
 }
 
 @end

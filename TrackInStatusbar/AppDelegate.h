@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject  {
+@interface AppDelegate : NSObject  <NSMenuDelegate> {
     IBOutlet NSMenu *statusMenu;
+    NSImage *statusHighlightImage;
+    NSImage *statusImage;
 }
 
 @property NSStatusItem * statusItem;

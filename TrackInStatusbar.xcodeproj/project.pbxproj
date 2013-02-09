@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6820D6CA16C6A0A70000FA53 /* ico-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6820D6C816C6A0A70000FA53 /* ico-alt.png */; };
+		6820D6CD16C6A0DE0000FA53 /* ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 6820D6CC16C6A0DE0000FA53 /* ico.png */; };
 		68E0A5BF16BE42B9005048CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E0A5BE16BE42B9005048CA /* Cocoa.framework */; };
 		68E0A5C916BE42B9005048CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68E0A5C716BE42B9005048CA /* InfoPlist.strings */; };
 		68E0A5CB16BE42B9005048CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E0A5CA16BE42B9005048CA /* main.m */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6820D6C816C6A0A70000FA53 /* ico-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ico-alt.png"; path = "../../Desktop/ico-alt.png"; sourceTree = "<group>"; };
+		6820D6CC16C6A0DE0000FA53 /* ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ico.png; path = ../../Desktop/ico.png; sourceTree = "<group>"; };
 		68E0A5BA16BE42B9005048CA /* TrackInStatusbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackInStatusbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E0A5BE16BE42B9005048CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		68E0A5C116BE42B9005048CA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -44,6 +48,8 @@
 		68E0A5AF16BE42B9005048CA = {
 			isa = PBXGroup;
 			children = (
+				6820D6CC16C6A0DE0000FA53 /* ico.png */,
+				6820D6C816C6A0A70000FA53 /* ico-alt.png */,
 				68E0A5C416BE42B9005048CA /* TrackInStatusbar */,
 				68E0A5BD16BE42B9005048CA /* Frameworks */,
 				68E0A5BB16BE42B9005048CA /* Products */,
@@ -152,6 +158,8 @@
 			files = (
 				68E0A5C916BE42B9005048CA /* InfoPlist.strings in Resources */,
 				68E0A5D516BE42B9005048CA /* MainMenu.xib in Resources */,
+				6820D6CA16C6A0A70000FA53 /* ico-alt.png in Resources */,
+				6820D6CD16C6A0DE0000FA53 /* ico.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +293,7 @@
 				68E0A5DA16BE42B9005048CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
