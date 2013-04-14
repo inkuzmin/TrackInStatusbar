@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6820D6CA16C6A0A70000FA53 /* ico-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6820D6C816C6A0A70000FA53 /* ico-alt.png */; };
 		6820D6CD16C6A0DE0000FA53 /* ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 6820D6CC16C6A0DE0000FA53 /* ico.png */; };
+		68454AF316C6F68600BA2B90 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68454AF216C6F68600BA2B90 /* ScriptingBridge.framework */; };
 		68E0A5BF16BE42B9005048CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E0A5BE16BE42B9005048CA /* Cocoa.framework */; };
 		68E0A5C916BE42B9005048CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68E0A5C716BE42B9005048CA /* InfoPlist.strings */; };
 		68E0A5CB16BE42B9005048CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E0A5CA16BE42B9005048CA /* main.m */; };
@@ -19,6 +20,8 @@
 /* Begin PBXFileReference section */
 		6820D6C816C6A0A70000FA53 /* ico-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ico-alt.png"; path = "../../Desktop/ico-alt.png"; sourceTree = "<group>"; };
 		6820D6CC16C6A0DE0000FA53 /* ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ico.png; path = ../../Desktop/ico.png; sourceTree = "<group>"; };
+		68454AF016C6F32D00BA2B90 /* iTunes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = iTunes.h; path = ../../../Desktop/iTunes.h; sourceTree = "<group>"; };
+		68454AF216C6F68600BA2B90 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		68E0A5BA16BE42B9005048CA /* TrackInStatusbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackInStatusbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E0A5BE16BE42B9005048CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		68E0A5C116BE42B9005048CA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -38,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68454AF316C6F68600BA2B90 /* ScriptingBridge.framework in Frameworks */,
 				68E0A5BF16BE42B9005048CA /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,6 +52,7 @@
 		68E0A5AF16BE42B9005048CA = {
 			isa = PBXGroup;
 			children = (
+				68454AF216C6F68600BA2B90 /* ScriptingBridge.framework */,
 				6820D6CC16C6A0DE0000FA53 /* ico.png */,
 				6820D6C816C6A0A70000FA53 /* ico-alt.png */,
 				68E0A5C416BE42B9005048CA /* TrackInStatusbar */,
@@ -86,6 +91,7 @@
 		68E0A5C416BE42B9005048CA /* TrackInStatusbar */ = {
 			isa = PBXGroup;
 			children = (
+				68454AF016C6F32D00BA2B90 /* iTunes.h */,
 				68E0A5D016BE42B9005048CA /* AppDelegate.h */,
 				68E0A5D116BE42B9005048CA /* AppDelegate.m */,
 				68E0A5D316BE42B9005048CA /* MainMenu.xib */,

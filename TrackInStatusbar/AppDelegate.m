@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 
+
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -35,12 +36,20 @@
     [_statusItem setAlternateImage: statusHighlightImage];
     
     
+    iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+
+    NSLog(@"%@", [[iTunes currentTrack] name]); // Here must be initial song declaration
+    
+    
+    
     
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                         selector:@selector(allDistributedNotifications:)
                                                             name:nil
                                                           object:nil];
 }
+
+
 
 
 
@@ -184,11 +193,6 @@
 
 - (IBAction)Quit:(id)sender {
     [NSApp terminate:nil];
-}
-
-- (void)onStatusMenu:(id)none
-{
-    NSLog(@"onStatusMenu");
 }
 
 @end

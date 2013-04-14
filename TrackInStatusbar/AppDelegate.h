@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "iTunes.h"
 
 @interface AppDelegate : NSObject  <NSMenuDelegate> {
     IBOutlet NSMenu *statusMenu;
